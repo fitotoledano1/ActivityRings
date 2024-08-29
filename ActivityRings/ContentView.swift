@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var progress: Double = 0.7
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            ActivityRing(progress: progress)
+                .frame(width: 200, height: 200)
+            
+            Slider(value: $progress, in: 0...1, step: 0.01)
+                .padding()
         }
-        .padding()
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
